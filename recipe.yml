@@ -50,6 +50,19 @@ stages:
     - mkdir -p /etc/udev/rules.d
     - ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 
+  - name: pipewire-additionals
+    type: apt
+    source:
+      packages:
+        - pipewire-audio
+        - pipewire-alsa
+        - pipewire-jack
+        - pipewire-pulse
+        - pipewire-audio-client-libraries
+        - pipewire-bin
+        - libpipewire-0.3-0t64
+        - obs-pipewire-audio-capture 
+
   - name: cleanup
     type: shell
     commands:
