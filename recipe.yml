@@ -73,14 +73,6 @@ stages:
         - libsdl2-ttf-2.0-0
         - libsdl2-mixer-2.0-0
         - libsdl2-image-2.0-0
-        - libva1
-        - libva-x11-1
-        - libpulse0
-        - libudev1
-        - libxcb1
-        - libx11-6
-        - libxrandr2
-        - libxi6
 
   - name: cleanup
     type: shell
