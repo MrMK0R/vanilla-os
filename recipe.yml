@@ -50,6 +50,13 @@ stages:
     - mkdir -p /etc/udev/rules.d
     - ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 
+  - name: realtime-header-image
+    type: apt
+    source:
+      packages:
+        - linux-headers-rt-amd64
+        - linux-image-6.12.27-rt-amd64
+
   - name: pipewire-additionals
     type: apt
     source:
