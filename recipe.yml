@@ -61,6 +61,7 @@ stages:
         - pipewire-audio-client-libraries
         - pipewire-bin
         - libpipewire-0.3-0t64
+        - libpipewire-0.3-common
         - obs-pipewire-audio-capture 
 
   - name: steamvr-dependencies
