@@ -67,7 +67,6 @@ stages:
     type: apt
     source:
       packages:
-        - sudo
         - libsdl2-2.0-0
         - libopenvr-api1t64
         - libsdl2-ttf-2.0-0
@@ -83,14 +82,14 @@ stages:
         - fuse3
         - libfuse2t64
         - libfuse3-4
-        
+
   - name: cleanup
     type: shell
     commands:
     - apt autoremove -y
     - apt clean
     - apt remove -y zutty gnome-shell-extension-prefs
-    #- SUDO_FORCE_REMOVE=yes apt purge -y sudo
+    - SUDO_FORCE_REMOVE=yes apt purge -y sudo
     - lpkg --lock
     - rm /etc/apt/sources.list.d/nvidia-drivers.list 
 
