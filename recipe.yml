@@ -74,6 +74,16 @@ stages:
         - libsdl2-mixer-2.0-0
         - libsdl2-image-2.0-0
 
+  - name: fuse-dependencies
+    type: apt
+    source:
+      packages:
+        - fuse
+        - fuse2fs
+        - fuse3
+        - libfuse2t64
+        - libfuse3-4
+        
   - name: cleanup
     type: shell
     commands:
