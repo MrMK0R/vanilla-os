@@ -63,6 +63,12 @@ stages:
         - pipewire-alsa
         - libwireplumber-0.5-0
 
+  - name: laptop-battery
+    type: apt
+    source:
+      packages:
+        - tlp
+        
   - name: steamvr-dependencies
     type: apt
     source:
