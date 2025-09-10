@@ -83,6 +83,12 @@ stages:
         - libfuse2t64
         - libfuse3-4
 
+  - name: other-items
+    type: apt
+    source:
+      packages:
+        - curl
+
   - name: adguardvpn-cli
     type: shell
     commands:
