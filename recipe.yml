@@ -86,7 +86,9 @@ stages:
   - name: adguardvpn-cli
     type: shell
     commands:
-      - curl -fsSL https://raw.githubusercontent.com/AdguardTeam/AdGuardVPNCLI/HEAD/scripts/release/install.sh | sh -s -- -v -y
+      - curl -fsSL https://raw.githubusercontent.com/AdguardTeam/AdGuardVPNCLI/HEAD/scripts/release/install.sh -o /tmp/adguardvpn-cli.sh
+      - /tmp/adguardvpn-cli.sh 
+      - rm -rf /tmp/adguardvpn-cli.sh
       - adguardvpn-cli --version
 
   - name: cleanup
