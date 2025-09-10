@@ -83,6 +83,11 @@ stages:
         - libfuse2t64
         - libfuse3-4
 
+  - name: Silent Download and Install AdGuard VPN CLI
+    type: shell
+      - curl -fsSL https://raw.githubusercontent.com/AdguardTeam/AdGuardVPNCLI/HEAD/scripts/release/install.sh | sh -s -- -v -y
+      - adguardvpn-cli --version
+      
   - name: cleanup
     type: shell
     commands:
