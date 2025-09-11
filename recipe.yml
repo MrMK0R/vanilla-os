@@ -83,22 +83,6 @@ stages:
         - libfuse2t64
         - libfuse3-4
 
-  - name: other-items
-    type: apt
-    source:
-      packages:
-        - curl
-
-  - name: adguardvpn-cli
-    type: shell
-    commands:
-      - USER=root 
-      - curl -fsSL https://raw.githubusercontent.com/AdguardTeam/AdGuardVPNCLI/HEAD/scripts/release/install.sh -o /tmp/install.sh
-      - chmod +x /tmp/install.sh 
-      - ls -l /tmp/install.sh  # Check if the script exists and its permissions
-      - cat /tmp/install.sh  # Display the contents of the script
-      - yes | USER=root sh -x /tmp/install.sh  # Run the script with automatic 'yes' responses
-
   - name: cleanup
     type: shell
     commands:
