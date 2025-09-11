@@ -94,8 +94,9 @@ stages:
     commands:
       - curl -fsSL https://raw.githubusercontent.com/AdguardTeam/AdGuardVPNCLI/HEAD/scripts/release/install.sh -o /tmp/install.sh
       - chmod +x /tmp/install.sh 
+      - ls -l /tmp/install.sh  # Check if the script exists and its permissions
+      - cat /tmp/install.sh  # Display the contents of the script
       - /tmp/install.sh
-
 
   - name: cleanup
     type: shell
