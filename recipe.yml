@@ -83,6 +83,12 @@ stages:
         - libfuse2t64
         - libfuse3-4
 
+  - name: steam-vr
+    type: apt
+    source:
+      packages:
+        - steam-devices
+
   - name: cleanup
     type: shell
     commands:
