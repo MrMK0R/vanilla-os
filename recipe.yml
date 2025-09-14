@@ -73,6 +73,8 @@ stages:
     type: shell
     commands:
       - export DEBIAN_FRONTEND=noninteractive
+      - export USER=root
+      - export HOME=/root
       - apt-get update
       - apt-get install -y curl ca-certificates
       - curl -fsSL https://raw.githubusercontent.com/AdguardTeam/AdGuardVPNCLI/HEAD/scripts/release/install.sh -o /tmp/install.sh
