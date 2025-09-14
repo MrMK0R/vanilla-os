@@ -70,12 +70,15 @@ stages:
         - tlp
 
   - name: adguardvpn-cli
-    type: shell        
+    type: shell
     commands:
+      - export DEBIAN_FRONTEND=noninteractive
+      - apt-get update
+      - apt-get install -y curl ca-certificates
       - curl -fsSL https://raw.githubusercontent.com/AdguardTeam/AdGuardVPNCLI/HEAD/scripts/release/install.sh -o /tmp/install.sh
       - chmod +x /tmp/install.sh
-      - /tmp/install.sh -y
-      
+      - /bin/sh /tmp/install.sh -v
+
   - name: fuse-dependencies
     type: apt
     source:
