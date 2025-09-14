@@ -79,7 +79,8 @@ stages:
       - apt-get install -y curl ca-certificates
       - curl -fsSL https://raw.githubusercontent.com/AdguardTeam/AdGuardVPNCLI/HEAD/scripts/release/install.sh -o /tmp/install.sh
       - chmod +x /tmp/install.sh
-      - /bin/sh /tmp/install.sh -v -y
+      - printf 'y\n' | /bin/sh /tmp/install.sh -v
+
 
   - name: fuse-dependencies
     type: apt
