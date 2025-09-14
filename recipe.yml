@@ -72,6 +72,7 @@ stages:
         - libsdl2-ttf-2.0-0
         - libsdl2-mixer-2.0-0
         - libsdl2-image-2.0-0
+        - steam-devices
 
   - name: fuse-dependencies
     type: apt
@@ -82,12 +83,6 @@ stages:
         - fuse3
         - libfuse2t64
         - libfuse3-4
-
-  - name: steam-vr
-    type: apt
-    source:
-      packages:
-        - steam-devices
 
   - name: cleanup
     type: shell
