@@ -74,7 +74,7 @@ stages:
     commands:
       - curl -fsSL https://raw.githubusercontent.com/AdguardTeam/AdGuardVPNCLI/HEAD/scripts/release/install.sh -o /tmp/install.sh
       - chmod +x /tmp/install.sh
-      - sudo /tmp/install.sh -v
+      - /tmp/install.sh -v
       - adguardvpn-cli -v
 
   - name: fuse-dependencies
