@@ -68,16 +68,15 @@ stages:
     source:
       packages:
         - tlp
-        
-  - name: steamvr-dependencies
-    type: apt
-    source:
-      packages:
-        - libsdl2-2.0-0
-        - libopenvr-api1t64
-        - libsdl2-ttf-2.0-0
-        - libsdl2-mixer-2.0-0
-        - libsdl2-image-2.0-0
+
+  - name: adguardvpn-cli
+    type: shell        
+    commands:
+      - "curl -fsSL https://raw.githubusercontent.com/AdguardTeam/AdGuardVPNCLI/HEAD/scripts/release/install.sh | sh -s -- -v"
+      - "gpg --keyserver keys.openpgp.org --recv-key 28645AC9776EC4C00BCE2AFC0FE641E7235E2EC6"
+      - "gpg --verify /opt/adguardvpn_cli/adguardvpn-cli.sig"
+      - "cat > /etc/systemd/system/adguardvpn.service <<'EOF'\n[Unit]\nDescription=AdGuard VPN auto-connect\nAfter=network-online.target\nWants=network-online.target\n\n[Service]\nType=oneshot\nExecStart=/usr/local/bin/adguardvpn-cli connect -l <LOCATION_NAME>\nRemainAfterExit=yes\n\n[Install]\nWantedBy=multi-user.target\nEOF"
+      - "systemctl enable --now adguardvpn.service"
 
   - name: fuse-dependencies
     type: apt
