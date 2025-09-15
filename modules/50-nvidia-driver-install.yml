@@ -20,6 +20,7 @@ modules:
     - libnvidia-gpucomp
     - libnvidia-fbc1
     - nvidia-container-toolkit
+    - mesa-utils
   modules:
     - name: nvidia-official-repo
       type: shell
