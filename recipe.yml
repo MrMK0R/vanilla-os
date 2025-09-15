@@ -91,10 +91,7 @@ stages:
       - export USER=root
       - export HOME=/root
       - apt-get update
-      - apt-get install -y curl ca-certificates systemd-resolved
-      - systemctl enable --now systemd-resolved
-      - rm -f /etc/resolv.conf
-      - ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+      - apt-get install -y curl ca-certificates
       - curl -fsSL https://raw.githubusercontent.com/AdguardTeam/AdGuardVPNCLI/HEAD/scripts/release/install.sh -o /tmp/install.sh
       - chmod +x /tmp/install.sh
       - /bin/sh /tmp/install.sh -v || true
