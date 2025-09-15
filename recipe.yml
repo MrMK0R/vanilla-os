@@ -19,6 +19,12 @@ stages:
       - lpkg --unlock
       - apt-get update
 
+  - name: packages-modules
+    type: includes
+    includes:
+      - modules/50-nvidia-driver-install.yml
+      - modules/51-nvidia-systemd-units.yml
+
   - name: enable-wayland
     type: shell
     commands:
