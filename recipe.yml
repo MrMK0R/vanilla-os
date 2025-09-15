@@ -63,17 +63,6 @@ stages:
         - pipewire-alsa
         - libwireplumber-0.5-0
 
-  - name: steamvr-dependencies
-    type: apt
-    source:
-      packages:
-        - libsdl2-2.0-0
-        - libopenvr-api1t64
-        - libsdl2-ttf-2.0-0
-        - libsdl2-mixer-2.0-0
-        - libsdl2-image-2.0-0
-        - steam-devices
-
   - name: fuse-dependencies
     type: apt
     source:
