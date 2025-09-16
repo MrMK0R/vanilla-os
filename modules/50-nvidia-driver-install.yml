@@ -8,18 +8,18 @@ modules:
   type: apt
   source:
     packages:
-    - nvidia-kernel-open
-    - nvidia-driver
-    - nvidia-vaapi-driver
-    - nvidia-settings
-    - nvidia-persistenced
-    - cuda-drivers
-    - libnvidia-cfg1
-    - libnvidia-glcore
-    - libnvidia-glvkspirv
-    - libnvidia-gpucomp
-    - libnvidia-fbc1
+    - nvidia-kernel-open=580.65.06-1
+    - nvidia-driver=580.65.06-1
+    - nvidia-vaapi-driver=580.65.06-1
+    - nvidia-settings=580.65.06-1
+    - nvidia-persistenced=580.65.06-1
+    - libnvidia-cfg1=580.65.06-1
+    - libnvidia-glcore=580.65.06-1
+    - libnvidia-glvkspirv=580.65.06-1
+    - libnvidia-gpucomp=580.65.06-1
+    - libnvidia-fbc1=580.65.06-1
     - nvidia-container-toolkit
+
     
   modules:
     - name: nvidia-official-repo
