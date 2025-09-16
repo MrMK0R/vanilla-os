@@ -1,31 +1,26 @@
 name: nvidia-official-driver
 type: shell
 commands:
-- apt-mark hold nvidia-kernel-open nvidia-driver nvidia-vaapi-driver nvidia-settings nvidia-persistenced nvidia-smi libnvidia-cfg1 libnvidia-glcore libnvidia-glvkspirv libnvidia-gpucomp libnvidia-fbc1 nvidia-container-toolkit
+  # Hold any packages that might already be present (optional)
+  - apt-mark hold nvidia-driver nvidia-utils nvidia-smi libnvidia-glcore libnvidia-glvkspirv \
+    libnvidia-cfg1 libnvidia-fbc1 libnvidia-gpucomp
 
 modules:
-- name: install-nvidia
-  type: apt
-  source:
-    packages:
-    - nvidia-kernel-open
-    - nvidia-driver
-    - nvidia-vaapi-driver
-    - nvidia-settings
-    - nvidia-persistenced
-    - cuda-drivers
-    - libnvidia-cfg1
-    - libnvidia-glcore
-    - libnvidia-glvkspirv
-    - libnvidia-gpucomp
-    - libnvidia-fbc1
-    - nvidia-container-toolkit
-    
-  modules:
-    - name: nvidia-official-repo
-      type: shell
-      commands:
-      - curl -fSsL https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/3bf863cc.pub | gpg --dearmor -o /usr/share/keyrings/nvidia-drivers.gpg
-      - echo 'deb [signed-by=/usr/share/keyrings/nvidia-drivers.gpg] https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/ /' > /etc/apt/sources.list.d/nvidia-drivers.list
-      - apt-get update
+  - name: install-nvidia
+    type: apt
+    # No packages are needed from the repo; the driver comes from the runfile
+    source:
+      packages: []
 
+    modules:
+      - name: nvidia-official-repo
+        type: shell
+        commands:
+          # download the 580.65.06 runfile
+          - curl -fSL https://us.download.nvidia.com/XFree86/Linux-x86_64/580.65.06/NVIDIA-Linux-x86_64-580.65.06.run \
+            -o /tmp/NVIDIA-580.65.06.run
+          - chmod +x /tmp/NVIDIA-580.65.06.run && \
+          - /tmp/NVIDIA-580.65.06.run --silent --no-kernel-module
+          - rm /tmp/NVIDIA-580.65.06.run && \
+            # hold the packages created by the runfile
+          - apt-mark hold nvidia-driver nvidia-utils nvidia-smi libnvidia-glcore libnvidia-glvkspirv libnvidia-cfg1 libnvidia-fbc1 libnvidia-gpucomp
