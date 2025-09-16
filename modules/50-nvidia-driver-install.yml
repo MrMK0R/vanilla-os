@@ -10,8 +10,6 @@ modules:
     packages:
     - nvidia-driver=580.65.06-1
     - nvidia-driver-libs=580.65.06-1
-    - nvidia-driver-bin=580.65.06-1
-    - nvidia-driver-libs-nonglvnd=580.65.06-1
     - libnvidia-cfg1=580.65.06-1
     - libnvidia-glcore=580.65.06-1
     - libnvidia-glvkspirv=580.65.06-1
@@ -26,6 +24,15 @@ modules:
     - nvidia-container-toolkit
     - nvidia-kernel-open
     - nvidia-vaapi-driver
+
+  modules:
+    - name: nvidia-official-repo
+      type: shell
+      commands:
+      - curl -fSsL https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/3bf863cc.pub | gpg --dearmor -o /usr/share/keyrings/nvidia-drivers.gpg
+      - echo 'deb [signed-by=/usr/share/keyrings/nvidia-drivers.gpg] https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/ /' > /etc/apt/sources.list.d/nvidia-drivers.list
+      - apt-get update
+
 
   modules:
     - name: nvidia-official-repo
