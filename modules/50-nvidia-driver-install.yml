@@ -1,31 +1,46 @@
 name: nvidia-official-driver
 type: shell
 commands:
-- apt-mark hold nvidia-kernel-open nvidia-driver nvidia-vaapi-driver nvidia-settings nvidia-persistenced nvidia-smi libnvidia-cfg1 libnvidia-glcore libnvidia-glvkspirv libnvidia-gpucomp libnvidia-fbc1 nvidia-container-toolkit
+  - apt-mark hold \
+      nvidia-kernel-open=580.65.06 \
+      nvidia-driver=580.65.06 \
+      nvidia-vaapi-driver=580.65.06 \
+      nvidia-settings=580.65.06 \
+      nvidia-persistenced=580.65.06 \
+      nvidia-smi=580.65.06 \
+      libnvidia-cfg1=580.65.06 \
+      libnvidia-glcore=580.65.06 \
+      libnvidia-glvkspirv=580.65.06 \
+      libnvidia-gpucomp=580.65.06 \
+      libnvidia-fbc1=580.65.06 \
+      nvidia-container-toolkit=580.65.06
 
 modules:
-- name: install-nvidia
-  type: apt
-  source:
-    packages:
-    - nvidia-kernel-open
-    - nvidia-driver
-    - nvidia-vaapi-driver
-    - nvidia-settings
-    - nvidia-persistenced
-    - cuda-drivers
-    - libnvidia-cfg1
-    - libnvidia-glcore
-    - libnvidia-glvkspirv
-    - libnvidia-gpucomp
-    - libnvidia-fbc1
-    - nvidia-container-toolkit
-    
-  modules:
-    - name: nvidia-official-repo
-      type: shell
-      commands:
-      - curl -fSsL https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/3bf863cc.pub | gpg --dearmor -o /usr/share/keyrings/nvidia-drivers.gpg
-      - echo 'deb [signed-by=/usr/share/keyrings/nvidia-drivers.gpg] https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/ /' > /etc/apt/sources.list.d/nvidia-drivers.list
-      - apt-get update
+  - name: install-nvidia
+    type: apt
+    source:
+      packages:
+        - nvidia-kernel-open=580.65.06
+        - nvidia-driver=580.65.06
+        - nvidia-vaapi-driver=580.65.06
+        - nvidia-settings=580.65.06
+        - nvidia-persistenced=580.65.06
+        - cuda-drivers=580.65.06
+        - libnvidia-cfg1=580.65.06
+        - libnvidia-glcore=580.65.06
+        - libnvidia-glvkspirv=580.65.06
+        - libnvidia-gpucomp=580.65.06
+        - libnvidia-fbc1=580.65.06
+        - nvidia-container-toolkit=580.65.06
+
+    modules:
+      - name: nvidia-official-repo
+        type: shell
+        commands:
+          - curl -fSsL https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/3bf863cc.pub \
+            | gpg --dearmor -o /usr/share/keyrings/nvidia-drivers.gpg
+          - echo 'deb [signed-by=/usr/share/keyrings/nvidia-drivers.gpg] https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/ /' \
+            > /etc/apt/sources.list.d/nvidia-drivers.list
+          - apt-get update
+
 
