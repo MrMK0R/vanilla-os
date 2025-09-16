@@ -9,19 +9,24 @@ modules:
   source:
     packages:
     - nvidia-driver=580.65.06-1
-    - nvidia-settings=580.65.06-1
-    - nvidia-persistenced=580.65.06-1
+    - nvidia-driver-libs=580.65.06-1
+    - nvidia-driver-bin=580.65.06-1
+    - nvidia-driver-libs-nonglvnd=580.65.06-1
     - libnvidia-cfg1=580.65.06-1
     - libnvidia-glcore=580.65.06-1
     - libnvidia-glvkspirv=580.65.06-1
     - libnvidia-gpucomp=580.65.06-1
     - libnvidia-fbc1=580.65.06-1
+    - libnvidia-ml1=580.65.06-1
+    - nvidia-persistenced=580.65.06-1
+    - nvidia-settings=580.65.06-1
+    - nvidia-kernel-support=580.65.06-1
+    - nvidia-vdpau-driver=580.65.06-1
+    - nvidia-kernel-dkms=580.65.06-1
     - nvidia-container-toolkit
-    - nvidia-kernel-open     # no version pin, comes from Debian repo
-    - nvidia-vaapi-driver    # no version pin, comes from Debian repo
+    - nvidia-kernel-open
+    - nvidia-vaapi-driver
 
-
-    
   modules:
     - name: nvidia-official-repo
       type: shell
