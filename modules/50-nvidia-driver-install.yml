@@ -1,35 +1,41 @@
 name: nvidia-official-driver
 type: shell
 commands:
-- apt-mark hold nvidia-kernel-open nvidia-driver nvidia-vaapi-driver nvidia-settings nvidia-persistenced nvidia-smi libnvidia-cfg1 libnvidia-glcore libnvidia-glvkspirv libnvidia-gpucomp libnvidia-fbc1 nvidia-container-toolkit
+  - apt-mark hold nvidia-kernel-open=580.65.06-1
+  - apt-mark hold nvidia-driver=580.65.06-1
+  - apt-mark hold nvidia-vaapi-driver=580.65.06-1
+  - apt-mark hold nvidia-settings=580.65.06-1
+  - apt-mark hold nvidia-persistenced=580.65.06-1
+  - apt-mark hold nvidia-smi=580.65.06-1
+  - apt-mark hold libnvidia-cfg1=580.65.06-1
+  - apt-mark hold libnvidia-glcore=580.65.06-1
+  - apt-mark hold libnvidia-glvkspirv=580.65.06-1
+  - apt-mark hold libnvidia-gpucomp=580.65.06-1
+  - apt-mark hold libnvidia-fbc1=580.65.06-1
+  - apt-mark hold nvidia-container-toolkit=580.65.06-1
 
 modules:
-- name: install-nvidia
-  type: apt
-  source:
-    packages:
-    - nvidia-driver=580.65.06-1
-    - nvidia-driver-libs=580.65.06-1
-    - libnvidia-cfg1=580.65.06-1
-    - libnvidia-glcore=580.65.06-1
-    - libnvidia-glvkspirv=580.65.06-1
-    - libnvidia-gpucomp=580.65.06-1
-    - libnvidia-fbc1=580.65.06-1
-    - libnvidia-ml1=580.65.06-1
-    - nvidia-persistenced=580.65.06-1
-    - nvidia-settings=580.65.06-1
-    - nvidia-kernel-support=580.65.06-1
-    - nvidia-vdpau-driver=580.65.06-1
-    - nvidia-kernel-dkms=580.65.06-1
-    - nvidia-container-toolkit
-    - nvidia-kernel-open
-    - nvidia-vaapi-driver
+  - name: install-nvidia
+    type: apt
+    source:
+      packages:
+        - nvidia-kernel-open=580.65.06-1
+        - nvidia-driver=580.65.06-1
+        - nvidia-vaapi-driver=580.65.06-1
+        - nvidia-settings=580.65.06-1
+        - nvidia-persistenced=580.65.06-1
+        - cuda-drivers=580.65.06-1
+        - libnvidia-cfg1=580.65.06-1
+        - libnvidia-glcore=580.65.06-1
+        - libnvidia-glvkspirv=580.65.06-1
+        - libnvidia-gpucomp=580.65.06-1
+        - libnvidia-fbc1=580.65.06-1
+        - nvidia-container-toolkit=580.65.06-1
 
-  modules:
-    - name: nvidia-official-repo
-      type: shell
-      commands:
-      - curl -fSsL https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/3bf863cc.pub | gpg --dearmor -o /usr/share/keyrings/nvidia-drivers.gpg
-      - echo 'deb [signed-by=/usr/share/keyrings/nvidia-drivers.gpg] https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/ /' > /etc/apt/sources.list.d/nvidia-drivers.list
-      - apt-get update
-
+    modules:
+      - name: nvidia-official-repo
+        type: shell
+        commands:
+          - curl -fSsL https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/3bf863cc.pub | gpg --dearmor -o /usr/share/keyrings/nvidia-drivers.gpg
+          - echo 'deb [signed-by=/usr/share/keyrings/nvidia-drivers.gpg] https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/ /' > /etc/apt/sources.list.d/nvidia-drivers.list
+          - apt-get update
