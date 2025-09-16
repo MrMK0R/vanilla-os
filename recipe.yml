@@ -53,6 +53,7 @@ stages:
         - fuse3
         - libfuse2t64
         - libfuse3-4
+        - mesa-utils
 
   - name: adguardvpn-cli
     type: shell
