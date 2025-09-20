@@ -74,6 +74,20 @@ stages:
         - libfuse3-4
         - mesa-utils
 
+  - name: adguard-cli
+    type: shell
+    commands:
+      - export DEBIAN_FRONTEND=noninteractive
+      - export USER=root
+      - export HOME=/root
+      - apt-get update
+      - apt-get install -y curl ca-certificates
+      - curl -fsSL -o /tmp/install.sh https://raw.githubusercontent.com/AdguardTeam/AdGuardCLI/release/adguard-cli.sh
+      - chmod +x /tmp/adguard-cli.sh
+      - /bin/sh /tmp/adguard-cli.sh -v || true
+      - mkdir -p /usr/local/bin
+      - ln -sf /opt/adguardcli/adguard-cli /usr/local/bin/adguard-cli
+
   - name: adguardvpn-cli
     type: shell
     commands:
