@@ -93,7 +93,7 @@ stages:
     type: shell
     commands:
       - curl -fSsL https://github.com/TibixDev/winboat/releases/download/v0.8.1/winboat-0.8.1-amd64.deb -o /tmp/winboat.deb
-      - chmod +x /tmp/winboat
+      - chmod +x /tmp/winboat.deb
       - dpkg -i /tmp/winboat.deb
       - rm -rf /tmp/*
 
