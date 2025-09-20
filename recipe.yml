@@ -99,6 +99,14 @@ stages:
       - lpkg --lock
       - rm /etc/apt/sources.list.d/nvidia-drivers.list 
 
+  - name: winboat
+    type: shell
+    commands:
+      - curl -fSsL https://github.com/TibixDev/winboat/releases/download/v0.8.1/winboat-0.8.1-amd64.deb -o /tmp/winboat.deb
+      - chmod +x /tmp/winboat
+      - dpkg -i /tmp/winboat.deb
+      - rm -rf /tmp/*
+
   - name: fsguard
     type: fsguard
     CustomFsGuard: false
