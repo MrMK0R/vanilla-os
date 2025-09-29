@@ -50,6 +50,13 @@ stages:
       - mkdir -p /etc/udev/rules.d
       - ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 
+
+  - name: gnome-stuff
+    type: apt 
+    source:
+      packages:
+        - gnome-tweaks
+
   - name: pipewire-additionals
     type: apt
     source:
