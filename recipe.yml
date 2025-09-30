@@ -50,7 +50,6 @@ stages:
       - mkdir -p /etc/udev/rules.d
       - ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 
-
   - name: gnome-stuff
     type: apt 
     source:
@@ -61,13 +60,14 @@ stages:
     type: apt
     source:
       packages:
-        - pipewire
-        - pipewire-bin
+        - libpipewire-0.3-0t64
         - libpipewire-0.3-common
         - libpipewire-0.3-modules
-        - libpipewire-0.3-0t64
-        - pipewire-pulse
+        - pipewire
         - pipewire-alsa
+        - pipewire-bin
+        - pipewire-jack
+        - pipewire-pulse
         - libwireplumber-0.5-0
 
   - name: fuse-dependencies
