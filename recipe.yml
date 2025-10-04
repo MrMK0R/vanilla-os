@@ -68,7 +68,7 @@ stages:
         - pipewire-bin
         - pipewire-jack
         - pipewire-pulse
-
+        - libwireplumber-0.5-0
 
   - name: fuse-dependencies
     type: apt
