@@ -55,8 +55,6 @@ stages:
     source:
       packages:
         - gnome-tweaks
-        - podman-compose
-				- libicu76
 
   - name: pipewire-additionals
     type: apt
